@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
+import SearchData from "../components/SearchData";
 
 function Search({ searchResults }) {
     const router = useRouter();
@@ -34,6 +35,20 @@ function Search({ searchResults }) {
 
                     <div className="flex flex-col">
                         {searchResults.map(
+                                ({ img, location, title, description, star, price, total }) => (
+                                    <InfoCard
+                                        key={img}
+                                        img={img}
+                                        location={location}
+                                        title={title}
+                                        description={description}
+                                        star={star}
+                                        price={price}
+                                        total={total}
+                                    />
+                                )
+                            )}
+                        {/* {SearchData.map(
                             ({ img, location, title, description, star, price, total }) => (
                                 <InfoCard
                                     key={img}
@@ -46,7 +61,7 @@ function Search({ searchResults }) {
                                     total={total}
                                 />
                             )
-                        )}
+                        )} */}
                     </div>
                 </section>
 

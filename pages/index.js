@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import LargeCard from '../components/LargeCard';
 import MediumCard from '../components/MediumCard';
 import SmallCard from '../components/SmallCard';
+import SmallCardData from "../components/SmallCardData";
 
 export default function Home({ exploreData, cardsData }) {
   return (
@@ -38,18 +39,25 @@ export default function Home({ exploreData, cardsData }) {
           <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
 
           <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
-            {cardsData?.map(({ img, title }) => (
+            {SmallCardData.map(({ img, title }) => (
+                <MediumCard
+                  key={img}
+                  img={img}
+                  title={title}
+                />
+              ))}
+            {/* {cardsData?.map(({ img, title }) => (
               <MediumCard
                 key={img}
                 img={img}
                 title={title}
               />
-            ))}
+            ))} */}
           </div>
         </section>
 
         <LargeCard
-          img="https://links.papareact.com/4cj"
+          img="/Large_Card.webp"
           title="The Greatest Outdoors"
           description="Wishlists curated by Airbnb."
           buttonText="Get Inspired"
@@ -65,8 +73,11 @@ export async function getStaticProps() {
   const exploreData = await fetch('https://links.papareact.com/pyp').then(
     res => res.json()
   );
+  // const exploreData = await fetch ('../SmallCard.json').then(
+  //   res => res.json()
+  // );
 
-  const cardsData = await fetch('https://links.papareact.com/zp1').then(
+  const cardsData = await fetch ('https://links.papareact.com/zp1').then(
     res => res.json()
   );
 
